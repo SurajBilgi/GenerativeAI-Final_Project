@@ -1,2 +1,6 @@
 *.csv
 *.jpg
+*__pycache__*
+*.json
+
+!chains/chains.json
