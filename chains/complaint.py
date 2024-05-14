@@ -32,8 +32,9 @@ class ComplaintChain:
     def __init__(self) -> None:
         self.parser = JsonOutputParser(pydantic_object=ImageInformation)
 
-    def process_prompt(self, llm, prompt, img):
+    def process_prompt(self, llm, prompt, img, ref):
         img = base64.b64encode(img).decode("utf-8")
+        ref = base64.b64encode(ref).decode("utf-8")
         result = llm.invoke(
             [
                 HumanMessage(
@@ -43,6 +44,10 @@ class ComplaintChain:
                         {
                             "type": "image_url",
                             "image_url": {"url": f"data:image/jpeg;base64,{img}"},
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/jpeg;base64,{ref}"},
                         },
                     ]
                 )

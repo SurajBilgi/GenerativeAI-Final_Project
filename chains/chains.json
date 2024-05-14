@@ -1,10 +1,10 @@
 [
     {
         "name": "restaurant_data",
-        "description": "This contains all information regarding different restaurants in the area and their menu"
+        "description": "This contains all information regarding different restaurants in the area, their menu and details regarding their dishes"
     },
     {
         "name": "recommendation",
-        "description": "This contains help to suggest/recommend dishes to user only if the query requests to recommend based on past orders"
+        "description": "This is used for food recommendations"
     }
 ]

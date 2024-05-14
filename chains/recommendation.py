@@ -2,7 +2,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough, RunnableParallel
 from prompts.common import SYSTEM_PROMPT
-from chains.sql import MySQLChain
+from chains.sql import SQLiteChain
 import json
 
 
@@ -15,10 +15,10 @@ def get_user_past_orders():
 class RecommendationChain:
 
     def __init__(self) -> None:
-        self.mysql_chain = MySQLChain()
+        self.SQLite_chain = SQLiteChain()
 
     def process_prompt(self, llm, prompt: str) -> str:
-        sql_chain = self.mysql_chain.return_sql_chain(prompt)
+        sql_chain = self.SQLite_chain.return_sql_chain(prompt)
         template = ChatPromptTemplate.from_messages(
             [
                 SYSTEM_PROMPT,

@@ -1,0 +1,108 @@
+[
+    {
+        "name": "Butter Chicken",
+        "ingredients": [
+            "Chicken",
+            "Butter",
+            "Cream",
+            "Tomatoes",
+            "Garam Masala",
+            "Garlic",
+            "Ginger"
+        ],
+        "preparation_time": 45,
+        "description": "A rich and creamy tomato-based curry flavored with Indian spices and butter.",
+        "dish_type": [
+            "main_course"
+        ],
+        "prices": "$15"
+    },
+    {
+        "name": "Palak Paneer",
+        "ingredients": [
+            "Spinach",
+            "Paneer",
+            "Onion",
+            "Tomatoes",
+            "Garlic",
+            "Garam Masala",
+            "Cream"
+        ],
+        "preparation_time": 30,
+        "description": "A smooth spinach curry served with cubes of fried paneer cheese.",
+        "dish_type": [
+            "main_course"
+        ],
+        "prices": "$12"
+    },
+    {
+        "name": "Chole Bhature",
+        "ingredients": [
+            "Chickpeas",
+            "Flour",
+            "Onion",
+            "Tomatoes",
+            "Garlic",
+            "Chole Masala",
+            "Oil"
+        ],
+        "preparation_time": 50,
+        "description": "Spicy chickpeas curry served with a fried bread called Bhature.",
+        "dish_type": [
+            "main_course"
+        ],
+        "prices": "$10"
+    },
+    {
+        "name": "Rogan Josh",
+        "ingredients": [
+            "Lamb",
+            "Yogurt",
+            "Garlic",
+            "Ginger",
+            "Kashmiri Chilies",
+            "Garam Masala"
+        ],
+        "preparation_time": 60,
+        "description": "Aromatic lamb curry with a gravy flavored with garlic, ginger, and Kashmiri spices.",
+        "dish_type": [
+            "main_course"
+        ],
+        "prices": "$18"
+    },
+    {
+        "name": "Masala Dosa",
+        "ingredients": [
+            "Rice",
+            "Urad Dal",
+            "Potatoes",
+            "Mustard Seeds",
+            "Turmeric",
+            "Curry Leaves"
+        ],
+        "preparation_time": 90,
+        "description": "Crispy rice pancake filled with a spicy mixture of mashed potatoes.",
+        "dish_type": [
+            "main_course"
+        ],
+        "prices": "$8"
+    },
+    {
+        "name": "Samosa",
+        "ingredients": [
+            "Potatoes",
+            "Peas",
+            "Flour",
+            "Ajwain",
+            "Garam Masala",
+            "Chili",
+            "Oil"
+        ],
+        "preparation_time": 30,
+        "description": "Fried pastry with a savory filling of spiced potatoes and peas.",
+        "dish_type": [
+            "starter"
+        ],
+        "prices": "$5"
+    }
+]

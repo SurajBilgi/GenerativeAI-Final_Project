@@ -7,9 +7,9 @@ from models import initialize_llm
 from chains.restaurant_data import RestaurantInfoChain
 from chains.recommendation import RecommendationChain
 from chains.complaint import ComplaintChain
-from utils.sql import MySQL
+from utils.sql import SQLite
 
-llm = initialize_llm(name="gpt4")
+llm = initialize_llm(name="gpt4o")
 
 chain_info = json.load(open("chains/chains.json"))
 
@@ -20,9 +20,9 @@ chat_chains = {
 
 complaint_chain = ComplaintChain()
 
-prompt_router = PromptRouter(llm=llm, chain_info=chain_info)
+prompt_router = PromptRouter(chain_info=chain_info)
 
-mysql = MySQL()
+sqlite = SQLite()
 app = FastAPI()
 
 
@@ -33,21 +33,21 @@ async def root():
 
 @app.get("/restaurant-list")
 async def restaurant_list():
-    result = mysql(
+    result = sqlite(
         """
-        SELECT name FROM restaurants.name
+        SELECT distinct restaurantname FROM details
         """
     )
-    return {"restaurant_list": [r["name"] for r in result]}
+    return {"restaurant_list": [r["restaurantname"] for r in result]}
 
 
 @app.post("/restaurant-info")
 async def restaurant_info(text: str = Form(...)):
-    result = mysql(
+    result = sqlite(
         f"""
         SELECT item_type, item_name, cost, preparation_time 
-        FROM restaurants.details 
-        WHERE restaurant_id in (SELECT id from restaurants.name WHERE name like "%{text}%") 
+        FROM details 
+        WHERE  restaurantname like "%{text}%"
         """
     )
     return {"restaurant_info": result}
@@ -63,10 +63,15 @@ async def search(text: dict):
 
 
 @app.post("/complaint")
-async def complaint(file: UploadFile = File(...), text: str = Form(...)):
-    if file.filename == "":
+async def complaint(
+    cust_file: UploadFile = File(...),
+    ref_file: UploadFile = File(...),
+    text: str = Form(...),
+):
+    if cust_file.filename == "" or ref_file.filename == "":
         return JSONResponse(status_code=400, content={"error": "No selected file"})
 
-    contents = await file.read()
+    cus_contents = await cust_file.read()
+    ref_contents = await ref_file.read()
 
-    return complaint_chain.process_prompt(llm, text, contents)
+    return complaint_chain.process_prompt(llm, text, cus_contents, ref_contents)

@@ -1,6 +1,6 @@
 *.csv
-*.jpg
 *__pycache__*
 *.json
 
+!data/past_orders.json
 !chains/chains.json

@@ -5,10 +5,10 @@ from langchain_openai import ChatOpenAI
 import json
 
 from prompts.sql import SQL_GENERATION_PROMPT
-from utils.sql import MySQL
+from utils.sql import SQLite
 
 
-class MySQLChain:
+class SQLiteChain:
 
     def __init__(self) -> None:
         self.output_parser = StrOutputParser()
@@ -22,11 +22,11 @@ class MySQLChain:
             ]
         )
 
-        self.mysql = MySQL()
+        self.SQLite = SQLite()
         self.llm = ChatOpenAI(model="gpt-3.5-turbo-0613")
 
     def process_query(self, query):
-        data = self.mysql(query)
+        data = self.SQLite(query)
         return json.dumps(data)
 
     def return_sql_chain(self, prompt: str) -> str:

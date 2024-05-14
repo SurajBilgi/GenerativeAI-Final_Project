@@ -2,11 +2,13 @@ from langchain.prompts import PromptTemplate
 from langchain.chains.router.llm_router import LLMRouterChain, RouterOutputParser
 from langchain.chains.router.multi_prompt_prompt import MULTI_PROMPT_ROUTER_TEMPLATE
 from typing import Dict
+from langchain_openai import ChatOpenAI
 
 
 class PromptRouter:
 
-    def __init__(self, llm, chain_info: Dict) -> None:
+    def __init__(self, chain_info: Dict) -> None:
+        llm = ChatOpenAI(model="gpt-4-turbo")
         destinations = [f"{p['name']}: {p['description']}" for p in chain_info]
         destinations_str = "\n".join(destinations)
         router_template = MULTI_PROMPT_ROUTER_TEMPLATE.format(
