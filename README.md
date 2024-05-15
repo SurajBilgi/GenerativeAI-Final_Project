@@ -1,5 +1,6 @@
-# Restaurant Chatbot
+# DineMate
 
+![landing](imgs/frontend.png)
 ## Overview
 This project is a restaurant chatbot designed using Langchain and GPT, with a frontend built in Streamlit and APIs managed by FastAPI. The chatbot interacts with customers to provide personalized food recommendations and resolve customer complaints. All data is stored in a SQLite database.
 
